@@ -30,6 +30,12 @@ app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 
 // Routes
+app.get("/", function(req, res){
+    res.send(index.html)
+})
+app.get("/saved", function(req, res){
+    res.send(saved.html)
+})
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {

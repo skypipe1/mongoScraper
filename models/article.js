@@ -22,6 +22,16 @@ var ArticleSchema = new Schema({
   note: {
     type: Schema.Types.ObjectId,
     ref: "Note"
+  },
+  
+  isSaved: {
+      type: Boolean,
+      default: false
+  },
+
+  ArticleCreated: {
+      type: Date,
+      default: Date.now
   }
 });
 

@@ -8,8 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/mongoScraper/public/assets/css/style.css" type="text/css" />
     <title>Mongo Scraper!</title>
-    
-    
+
+
 
 </head>
 
@@ -26,18 +26,21 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id= "savedArticleButton" href="/">Saved Articles</a>
+                    <a class="nav-link" id="savedArticleButton" href="/">Saved Articles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/">
                         <form class="form-inline" action="/" method="GET">
-                            <button id="fuck" class="btn btn-sm btn-outline-secondary scrapeButton" type="button">Scrape Articles</button>
+                            <button id="fuck" class="btn btn-sm btn-outline-secondary scrapeButton" type="button">Scrape
+                                Articles</button>
                         </form>
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
+
+
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -46,12 +49,37 @@
         </div>
     </div>
 
-    <div id="results">
-        
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Note</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="input" class="form-group">
+                        <!-- <label for="comment">Comment:</label> -->
+                        <!-- <textarea class="form-control" rows="5" id="comment"></textarea> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="modalSave" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
     </div>
 
-    
- 
+    <div id="results">
+
+    </div>
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

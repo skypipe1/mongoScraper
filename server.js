@@ -68,6 +68,8 @@ app.get("/scrape", function(req, res) {
   });
 });
 
+
+
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
@@ -82,7 +84,34 @@ app.get("/articles", function(req, res) {
     });
 });
 
-// // Route for grabbing a specific Article by id, populate it with it's note
+// for the save that sets it as true
+app.post("/articles/:id", function(req, res) {
+  let id = req.params.id
+  db.Article.updateOne({ _id: id}, {$set: { isSaved: true } }, function (error, edited){
+    if (error) {
+      console.log(error);
+      res.send(error);
+    }
+    else {
+      // Otherwise, send the mongojs response to the browser
+      // This will fire off the success function of the ajax request
+      console.log(edited);
+      res.send(edited);
+    }
+  })
+ 
+  
+});
+
+app.get("/savedArticles", function (req, res){
+  db.Article.find({isSaved: true}).then(function (dbArticle){
+    res.json(dbArticle)
+  }).catch(function (err){
+    res.json(err);
+  });
+});
+
+// // // Route for grabbing a specific Article by id, populate it with it's note
 // app.get("/articles/:id", function(req, res) {
 //   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
 //   db.Article.findOne({ _id: req.params.id })
@@ -98,7 +127,7 @@ app.get("/articles", function(req, res) {
 //     });
 // });
 
-// // Route for saving/updating an Article's associated Note
+// Route for saving/updating an Article's associated Note
 // app.post("/articles/:id", function(req, res) {
 //   // Create a new note and pass the req.body to the entry
 //   db.Note.create(req.body)

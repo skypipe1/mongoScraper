@@ -23,14 +23,14 @@
 //     $("tbody").append(tr);
 //   });
 // }
- 
-$(document).on('click', "#saveArticle", function(e){
+
+$(document).on('click', "#saveArticle", function (e) {
     e.preventDefault()
     let thisId = $(this).attr("data-id");
     $.ajax({
         method: "POST",
         url: "/articles/" + thisId,
-    }).then(function(data){
+    }).then(function (data) {
         console.log(data)
     })
 })
@@ -88,20 +88,58 @@ $.getJSON("/articles", function (data) {
     }
 });
 
-
-$("#savedArticleButton").on("click", function(e){
+// displays saved articles
+$("#savedArticleButton").on("click", function (e) {
     e.preventDefault()
     $("#results").empty()
     // on click of saved articles to display
-$.getJSON("/savedArticles", function (data) {
-    $("#results").empty()
-    // For each one
-    for (var i = 0; i < data.length; i++) {
-        // Display the apropos information on the page
-        $("#results").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='deleteArticle'>Delete</button>"+ "<button data-id='" + data[i]._id + "' id='saveArticle'>Save Article</button>");
-    }
+    $.getJSON("/savedArticles", function (data) {
+        $("#results").empty()
+        // For each one
+        for (var i = 0; i < data.length; i++) {
+            // Display the apropos information on the page
+            $("#results").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='deleteArticle'>Delete</button>" + "<button data-id='" + data[i]._id + "' id='saveArticle'>Save Article</button>");
+        }
+    });
 });
-})
+// for deleteing article
+$("#deleteArticle").on("click", function (e) {
+    e.preventDefault()
+    $("#results").empty()
+    // on click of saved articles to display
+    $.getJSON("/deletedArticles", function (data) {
+        $("#results").empty()
+        // For each one
+        for (var i = 0; i < data.length; i++) {
+            // Display the apropos information on the page
+            $("#results").remove("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='deleteArticle'>Delete</button>" + "<button data-id='" + data[i]._id + "' id='saveArticle'>Save Article</button>");
+        }
+    });
+});
+
+// When you click the savenote button
+$(document).on("click", "#deleteArticle", function () {
+    // Grab the id associated with the article from the submit button
+    var thisId = $(this).attr("data-id");
+
+    // Run a POST request to change the note, using what's entered in the inputs
+    $.ajax({
+        method: "POST",
+        url: "/remove/" + thisId,
+
+    })
+        // With that done
+        .then(function (data) {
+            // Log the response
+            console.log(data);
+            // Empty the notes section
+            $("#notes").empty();
+        });
+
+    // Also, remove the values entered in the input and textarea for note entry
+    $("#titleinput").val("");
+    $("#bodyinput").val("");
+});
 
 
 // Whenever someone clicks a p tag

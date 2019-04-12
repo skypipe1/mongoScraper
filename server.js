@@ -103,8 +103,39 @@ app.post("/articles/:id", function(req, res) {
   
 });
 
+// route for saved articles
 app.get("/savedArticles", function (req, res){
   db.Article.find({isSaved: true}).then(function (dbArticle){
+    res.json(dbArticle)
+  }).catch(function (err){
+    res.json(err);
+  });
+});
+
+
+
+// deleting
+app.post("/remove/:id", function(req, res) {
+  let id = req.params.id
+  db.Article.updateOne({ _id: id}, {$set: { isSaved: false } }, function (error, edited){
+    if (error) {
+      console.log(error);
+      res.send(error);
+    }
+    else {
+      // Otherwise, send the mongojs response to the browser
+      // This will fire off the success function of the ajax request
+      console.log(edited);
+      res.send(edited);
+    }
+  })
+ 
+  
+});
+
+// route for deleting articles
+app.get("/deletedArticles", function (req, res){
+  db.Article.find({isSaved: false}).then(function (dbArticle){
     res.json(dbArticle)
   }).catch(function (err){
     res.json(err);

@@ -117,7 +117,7 @@ $("#deleteArticle").on("click", function (e) {
     });
 });
 
-// When you click the savenote button
+// When you click the delete button WORKING
 $(document).on("click", "#deleteArticle", function () {
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
@@ -214,7 +214,7 @@ $(document).on("click", "#note", function () {
             console.log(data);
 
             $(".modal-title").append("<h5>" + data.title + "</h5>");
-            $("#input").append("<textarea class='form-control' rows='5' id='comment'></textarea>");
+            $("#input").append("<textarea class='form-control' rows='5' id='bodyinput'></textarea>");
             $("#input").append("<button data-id='" + data._id + "' id='savenote' class='btn btn-primary btn-sm' style='margin-top:20px;'data-dismiss='modal'>Save Note</button>");
 
             // If there's a note in the article
@@ -230,13 +230,14 @@ $(document).on("click", "#savenote", function () {
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
     // console.log(thisId);
-
+    console.log( $("#bodyinput").val());
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
         method: "POST",
-        url: "/articles/" + thisId,
+        url: "/notes/" + thisId,
         data: {
             // Value taken from note textarea
+            // title: $("#titleinput").val(),
             body: $("#bodyinput").val()
         }
     })

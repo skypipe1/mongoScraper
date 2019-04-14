@@ -70,7 +70,7 @@ $("#fuck").on('click', function (e) {
         // For each one
         for (var i = 0; i < data.length; i++) {
             // Display the apropos information on the page
-            $("#results").append("<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>" + "<br />" + "<p>" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='saveArticle'>Save Article</button>" + "<button type='button' class='#' data-toggle='modal' data-target='#exampleModalCenter' data-id='" + data[i]._id + "' id='note'>Add Note</button>" + "<br>" + "<hr>");
+            $("#results").append("<div class='card' style='width: 18rem;'>"+"<div class='card-body'>"+"<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>" + "<br />" + "<p>" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='saveArticle'>Save Article</button>" + "<button type='button' class='buttonNote' data-toggle='modal' data-target='#exampleModalCenter' data-id='" + data[i]._id + "' id='note'>Add Note</button>" + "<br>" + "<hr>"+"</div>"+"</div");
         }
     });
 
@@ -84,7 +84,7 @@ $.getJSON("/articles", function (data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
         // Display the apropos information on the page
-        $("#results").append("<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>" + "<br />" + "<p>" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='saveArticle'>Save Article</button>" + "<button type='button' class='#' data-toggle='modal' data-target='#exampleModalCenter' data-id='" + data[i]._id + "' id='note'>Add Note</button>" + "<br>" + "<hr>");
+        $("#results").append("<div class='card' style='width: 18rem;'>"+"<div class='card-body'>"+"<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>" + "<br />" + "<p>" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='saveArticle'>Save Article</button>" + "<button type='button' class='buttonNote' data-toggle='modal' data-target='#exampleModalCenter' data-id='" + data[i]._id + "' id='note'>Add Note</button>" + "<br>" + "<hr>"+"</div>"+"</div");
     }
 });
 
@@ -98,7 +98,7 @@ $("#savedArticleButton").on("click", function (e) {
         // For each one
         for (var i = 0; i < data.length; i++) {
             // Display the apropos information on the page
-            $("#results").append("<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>" + "<br />" + "<p>" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='deleteArticle'>Delete</button>" + "<button type='button' class='#' data-toggle='modal' data-target='#exampleModalCenter' data-id='" + data[i]._id + "' id='note'>Add Note</button>" + "<br>" + "<hr>");
+            $("#results").append("<div class='card' style='width: 18rem;'>"+"<div class='card-body'>"+"<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>" + "<br />" + "<p>" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='deleteArticle'>Delete</button>" + "<button type='button' class='buttonNote' data-toggle='modal' data-target='#exampleModalCenter' data-id='" + data[i]._id + "' id='note'>Add Note</button>" + "<br>" + "<hr>"+"</div>"+"</div");
         }
     });
 });
@@ -112,7 +112,7 @@ $("#deleteArticle").on("click", function (e) {
         // For each one
         for (var i = 0; i < data.length; i++) {
             // Display the apropos information on the page
-            $("#results").remove("<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>" + "<br />" + "<p>" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='deleteArticle'>Delete</button>" + "<button type='button' class='#' data-toggle='modal' data-target='#exampleModalCenter' data-id='" + data[i]._id + "' id='note'>Add Note</button>" + "<br>" + "<hr>");
+            $("#results").remove("<div class='card' style='width: 18rem;'>"+"<div class='card-body'>"+"<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>" + "<br />" + "<p>" + data[i].link + "</p>" + "<br />" + "<button data-id='" + data[i]._id + "' id='deleteArticle'>Delete</button>" + "<button type='button' class='buttonNote' data-toggle='modal' data-target='#exampleModalCenter' data-id='" + data[i]._id + "' id='note'>Add Note</button>" + "<br>" + "<hr>"+"</div>"+"</div");
         }
     });
 });

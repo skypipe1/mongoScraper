@@ -7,16 +7,16 @@
     float: left;
     display: inline;
     margin-left: 2%;
-    background-color: honeydew;
+    background-color: whitesmoke;
 }
 
 .back{
-    background-color: rgba(169, 169, 169, 0.671);
+    background-color: lightgray;
 }
 
 .buttonNote{
     margin-left: 2%;
-    background-color: salmon;
+    background-color: #FA785C;
     border-style: solid;
     border-color: darkgray;
 }

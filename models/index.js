@@ -1,4 +1,6 @@
+var path = require("path");
+
 module.exports = {
-    Article: require("./Article"),
-    Note: require("./note")
-  };
+  Article: require(path.join(__dirname, "Article")),
+  Note: require("./note")
+};

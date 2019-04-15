@@ -9,7 +9,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -25,7 +25,8 @@ app.use(express.json());
 app.use(express.static("public"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ArticleScrape";
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
+
 
 // Require all models
 var db = require("./models");

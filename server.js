@@ -8,8 +8,6 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-// Require all models
-var db = require("./models");
 
 var PORT = 3000;
 
@@ -28,6 +26,10 @@ app.use(express.static("public"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ArticleScrape";
 
 mongoose.connect(MONGODB_URI);
+
+// Require all models
+var db = require("./models");
+
 // Connect to the Mongo DB
 // mongoose.connect("mongodb://localhost/ArticleScrape", { useNewUrlParser: true });
 

@@ -182,6 +182,10 @@ app.post("/notes/:id", function(req, res) {
     });
 });
 
+app.get("/", function(req, res) {
+  res.send("index.html")
+})
+
 // Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
